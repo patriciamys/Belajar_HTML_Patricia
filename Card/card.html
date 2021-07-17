@@ -1,0 +1,141 @@
+<!DOCTYPE>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="css/style.css" rel="stylesheet">
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+		<!-- jQuery library -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+		<!-- Popper JS -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+		<!-- Latest compiled JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+		<style>
+			.container-fluid{
+				background-color: rgb(19, 19, 19);
+				padding-top: 0;
+				padding-bottom:50px;
+			}
+			
+			.card-header h3{
+				font-family: Verdana, sans-serif;
+				font-size:17px;
+				font-weight:bold;
+				text-align: center;
+				padding: 10px 30px;
+				letter-spacing: 3px;
+				line-height: 25px;
+				border: 0;
+			}
+
+			.card-header hr{
+				border: 1px rgb(255, 0, 98) solid;
+				height: 0px;
+				width: 60px;
+			}
+			
+			button {
+				border: none;
+				outline: 0;
+				color: whitesmoke;
+				background-color: black;
+				font-family: 'Verdana', sans-serif;
+				font-size: 11px;
+				font-weight: bold;
+				text-align: center;
+				margin: 0;
+				position: relative;
+				left:30%;
+				display: inline-block;
+				padding: 5px 20px;
+                border-radius: 40px;
+			}
+			
+			button:hover, a:hover {
+				opacity: 0.7;
+			}
+
+			.card-body{
+				background-color: rgb(245, 244, 244);
+				font-family: 'Verdana', Arial, sans-serif;
+				font-size:15px;
+				color: rgb(0, 0, 0);
+				padding: 10px 40px;
+				padding-top: 0;
+				border: 0;
+			}
+
+			.card-header{
+				border: 0;
+				background-color: rgb(245, 244, 244);
+			}
+
+			.card-footer{
+				padding: 30px;
+				background-color: rgb(245, 244, 244);
+			}
+			
+			.card{
+				width: 400px;
+				border: 0px;
+			}
+			.d-flex{
+				gap:30px
+			}
+		</style>
+		<title>Patricia's Card</title>
+	</head>
+	
+	<body>
+		<div class="container-fluid">
+			<div class="col-12 pt-5">
+				<div class="d-flex flex-md-row flex-column">
+					<div class="card ">
+						<img src="img/strawberry.png" alt="">
+						<div class="card-header">
+							<h3>STAWBERRY SMOOTHIE WITH GREEK YOGURT</h3>
+							<hr>
+						</div>
+						<div class="card-body">
+							<p>Really scrumptious and filling fresh fruit smoothies are a great start to the day or a sweet treat.</p>
+						</div>
+						<div class="card-footer">
+							<button>READ MORE</button>
+						</div>
+					</div>
+					<div class="card">
+						<img src="img/salad.png" alt="">
+						<div class="card-header"">
+							<h3>SPINACH & BEETROOT SALAD</h3>
+							<hr>
+						</div>
+						<div class="card-body">
+							<p>This is one of the simplest salads ever, tastes amazing and looks like you've made a real effort.</p>
+						</div>
+						<div class="card-footer">
+							<button>READ MORE</button>
+						</div>
+					</div>
+					<div class="card shadow-sm">
+						<img src="img/almond.png" alt="">
+						<div class="card-header"">
+							<h3>GF GRANOLA & ALMOND PROTEIN SHAKE</h3>
+							<hr>
+						</div>
+						<div class="card-body">
+							<p>Make this tasty homemade granola recipe in bulk and enjoy a little sprinkle whenever you fancy.</p>
+						</div>
+						<div class="card-footer">
+							<button>READ MORE</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
