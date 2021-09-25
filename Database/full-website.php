@@ -1,0 +1,360 @@
+<?php
+	include_once 'db_connection.php';
+	$result = mysqli_query($link,"SELECT * FROM menu ORDER BY nama DESC");
+?>
+
+<!DOCTYPE>
+<html>
+	<head>
+		<style>
+			/* Navigasi */
+			.back-navbar ul{
+				list-style-type: none;
+				margin: 0;
+				padding: 0;
+				overflow: hidden;
+				background-color: #333;
+			}
+						
+			.list-kiri li{
+				float: left;
+			}
+						
+			.font-navbar li a{
+				display: block;
+				color: white;
+				padding: 18px 20px;
+				text-align: center;
+				text-decoration: none;
+				font-family: Helvetica;
+				font-size: 18px;
+			}
+							
+			.hover li a:hover{
+				background-color: #111;
+				text-decoration: none;
+				color: white;
+			}
+						
+			.active{
+				background-color: #04AA6D;
+			}
+
+			.back-navbar .kanan{
+				float: right;
+			}
+
+
+			/* Card */
+			.container-fluid{
+				background-color: rgb(19, 19, 19);
+				padding-top: 0;
+				padding-bottom:50px;
+			}
+			
+			.container-fluid .card{
+				width: 400px;
+				border: 0px;
+			}
+			
+			.card-header h3{
+				font-family: Verdana, sans-serif;
+				font-size:17px;
+				font-weight:bold;
+				text-align: center;
+				padding: 10px 30px;
+				letter-spacing: 3px;
+				line-height: 25px;
+				border: 0;
+			}
+
+			.card-header hr{
+				border: 1px rgb(255, 0, 98) solid;
+				height: 0px;
+				width: 60px;
+			}
+			
+			.card .card-footer button{
+				border: none;
+				outline: 0;
+				color: whitesmoke;
+				background-color: black;
+				font-family: 'Verdana', sans-serif;
+				font-size: 11px;
+				font-weight: bold;
+				text-align: center;
+				margin: 0;
+				position: relative;
+				left:32%;
+				display: inline-block;
+				padding: 5px 20px;
+                border-radius: 40px;
+			}
+			
+			.card-footer button:hover, a:hover {
+				opacity: 0.7;
+			}
+
+			.card .card-body{
+				background-color: rgb(245, 244, 244);
+				font-family: 'Verdana', Arial, sans-serif;
+				font-size:15px;
+				color: rgb(0, 0, 0);
+				padding: 10px 40px;
+				border: 0;
+				letter-spacing: 0.4px;
+				padding-top: 0;
+			}
+
+			.card .card-header{
+				border: 0;
+				background-color: rgb(245, 244, 244);
+			}
+
+			.card .card-footer{
+				padding: 30px;
+				background-color: rgb(245, 244, 244);
+			}
+			
+			.d-flex{
+				gap:30px
+			}
+
+			/* Footer */
+			.footer-dark {
+				margin: 0px 0px;
+				padding-top: 40px;
+				padding-bottom: 20px;
+				padding-left: 80px;
+				padding-right: 30px;
+				color:#f0f9ff;
+				background-color:#000000;
+				bottom: 0;
+			    width:100%;
+			}
+
+			.footer-dark h1{
+				margin-top:20px;
+				padding: 0;
+				font-weight:bold;
+				font-size:35px;
+				font-family: oswald;
+				line-height: 200%;
+				color: white;
+			}
+
+			.footer-dark h4 {
+				margin-top:40px;
+				font-weight:bold;
+				font-size:15px;
+				font-family: 'Nunito', sans-serif;
+				color: silver;
+				line-height: 200%;
+			}
+
+			.footer-dark h3 {
+				margin-top:30px;
+				border-bottom: solid silver;
+				border-width: 1px;
+				font-family: 'Nunito', sans-serif;
+				font-size: 18px;
+				color: silver;
+				line-height: 250%;
+				text-align: center;
+			}
+
+			.footer-dark ul {
+				margin: 0px;
+				padding: 0px;
+				list-style:none;
+				font-size:14px;
+				font-family: 'Nunito', sans-serif;
+				margin-bottom:0;
+				line-height: 200%;
+			}
+
+			.footer-dark ul a{
+				padding: 0;
+				text-decoration:none;
+				color: rgb(122, 120, 120);
+				line-height: 200%;
+				font-family: 'Nunito', sans-serif;
+				font-weight:bold;
+			}
+
+			.footer-dark ul a:hover {
+				opacity:0.8;
+			}
+
+			.footer-dark .item.text {
+				padding: 0;
+				font-size: 14px;
+				font-family: 'Nunito', sans-serif;
+				color: rgb(122, 120, 120);
+				line-height: 120%;
+				font-weight:bold;
+			}
+
+			.footer-dark .copyright {
+				text-align:left;
+				padding-top:50px;
+				font-size:14px;
+				margin-bottom:0;
+				color: rgb(122, 120, 120);
+				font-family: 'Nunito', sans-serif;
+				font-weight: bold;
+			}
+
+			.footer-dark .right{
+				padding-left:20%;
+				padding-right: 12%;
+			}
+
+			.silver{
+				color: silver;
+				line-height: 100%;
+			}
+			
+
+		</style>
+		<title>My Website</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+	
+		<!-- Latest compiled JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	</head>
+	
+	<body>
+		<!-- Navigasi -->
+		<nav class="back-navbar list-kiri hover font-navbar">
+			<div>
+				<ul>
+					<li><a class="active" href="#home">Home</a></li>
+					<li><a href="#news">News</a></li>
+					<li><a href="#contact">Contact</a></li>
+					<li class="back-navbar kanan"><a href="#about">About</a></li>
+				</ul>
+			</div>
+		</nav>
+		
+		<!---Carousel--->
+		<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+		  <div class="carousel-inner">
+			<div class="carousel-item active">
+			  <img src="img/1.jpg" class="d-block w-100 h-100" alt="...">
+			</div>
+			<div class="carousel-item">
+			  <img src="img/2.jpg" class="d-block w-100 h-100" alt="...">
+			</div>
+			<div class="carousel-item">
+			  <img src="img/3.png" class="d-block w-100 h-100" alt="...">
+			</div>
+		  </div>
+		  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			<span class="sr-only">Previous</span>
+		  </a>
+		  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+			<span class="carousel-control-next-icon" aria-hidden="true"></span>
+			<span class="sr-only">Next</span>
+		  </a>
+		</div>
+
+		<!---Card--->
+		
+		<div class="container-fluid test">		
+			<div class="col-12 pt-5">
+				<div class="d-flex flex-md-row flex-column">
+				<?php
+					while($row = mysqli_fetch_array($result)) {
+				?>
+				
+					<div class="card ">
+						<img src="img/strawberry.png" alt="">
+						<div class="card-header">
+							<h3><?php echo $row["nama"]; ?></h3>
+							<hr>
+						</div>
+						<div class="card-body">
+							<p><?php echo $row["deskripsi"]; ?></p>
+						</div>
+						<div class="card-footer">
+							<button>READ MORE</button>
+						</div>
+					</div>
+				<?php
+					}
+				?>
+				</div>
+			</div>
+		</div>
+
+
+
+		<!-- Footer -->
+		<div class="footer-dark">
+			<footer>
+				<div class="row">
+					<div class="col-md-3 item text">
+						<h1>ENVOY</h1>
+						<p>We create possibilities</p> 
+						<p>for the connected world.</p>
+						<p class="silver">Be Bold.</p>
+					</div>
+					<div class="col-md-4">
+						<div class="row">
+							<div class="col-5 item text">
+								<h4>Explore</h4>
+								<ul>
+									<li><a href="#">Home</a></li>
+									<li><a href="#">About</a></li>
+									<li><a href="#">Capabilities</a></li>
+									<li><a href="#">Careers</a></li>
+								</ul>
+							</div>
+							<div class="col-7 item text">
+								<h4>Visit</h4>
+								<p>Envoy So. California</p> 
+								<p>34 Tesla, Ste 100</p>
+								<p>Irvine, Ca, USA 92618</p>
+								<h4>New Business</h4>
+								<P>engage@wearenvoy.com</P>
+								<p>949.333.3106</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-5">
+						<div class="row">
+							<div class="col-3 item text">
+								<h4>Follow</h4>
+								<ul>
+									<li><a href="#">Instagram</a></li>
+									<li><a href="#">Twitter</a></li>
+									<li><a href="#">LinkedIn</a></li>
+								</ul>
+							</div>
+							<div class="col-3 item text">
+								<h4>Legal</h4>
+								<ul>
+									<li><a href="#">Term</a></li>
+									<li><a href="#">Privacy</a></li>
+								</ul>
+							</div>
+							<div class="col-6 item right">
+								<h3>Next: About</h3>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-10 item text">
+						<p class="copyright">© 2020 Envoy. All Rights Reserved.</p>
+					</div>
+				</div>
+			</footer>
+		</div>
+		
+	</body>
+</html>
